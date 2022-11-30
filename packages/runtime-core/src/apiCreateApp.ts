@@ -173,7 +173,7 @@ export type CreateAppFunction<HostElement> = (
 ) => App<HostElement>
 
 let uid = 0
-
+/**创建APP by lwz */
 export function createAppAPI<HostElement>(
   render: RootRenderFunction<HostElement>,
   hydrate?: RootHydrateFunction
@@ -310,6 +310,7 @@ export function createAppAPI<HostElement>(
           if (isHydrate && hydrate) {
             hydrate(vnode as VNode<Node, Element>, rootContainer as any)
           } else {
+            // app 的mount函数 执行了 renderer.ts 中 baseCreateRenderer 的 render ---by lwz
             render(vnode, rootContainer, isSVG)
           }
           isMounted = true

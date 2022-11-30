@@ -90,4 +90,6 @@ function compileToFunction(
 registerRuntimeCompiler(compileToFunction)
 
 export { compileToFunction as compile }
+
+// ts.config.json ==> paths ===> "@vue/*": ["packages/*/src"] 解析到指定目录 ---by lwz
 export * from '@vue/runtime-dom'

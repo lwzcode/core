@@ -63,9 +63,11 @@ export const hydrate = ((...args) => {
   ensureHydrationRenderer().hydrate(...args)
 }) as RootHydrateFunction
 
+// 入口使用到的createApp ---by lwz
 export const createApp = ((...args) => {
+  // ensureRenderer 最终执行了 baseCreateRenderer 返回了一个对象
   const app = ensureRenderer().createApp(...args)
-
+  // __DEV__ ： process.env.NODE_ENV !== 'production' ---by lwz
   if (__DEV__) {
     injectNativeTagCheck(app)
     injectCompilerOptionsCheck(app)

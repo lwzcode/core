@@ -460,6 +460,7 @@ const emptyAppContext = createAppContext()
 
 let uid = 0
 
+// 创建组件实例 ---by lwz
 export function createComponentInstance(
   vnode: VNode,
   parent: ComponentInternalInstance | null,

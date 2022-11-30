@@ -350,9 +350,10 @@ function baseCreateRenderer(
 
   // Note: functions inside this closure should use `const xxx = () => {}`
   // style in order to prevent being inlined by minifiers.
+  // render中主要做的patch操作 ---by lwz
   const patch: PatchFn = (
-    n1,
-    n2,
+    n1, // n1 表示旧的vnode
+    n2, // n2 表示新的vnode
     container,
     anchor = null,
     parentComponent = null,
@@ -378,6 +379,7 @@ function baseCreateRenderer(
     }
 
     const { type, ref, shapeFlag } = n2
+    debugger
     switch (type) {
       case Text:
         processText(n1, n2, container, anchor)
@@ -1175,6 +1177,7 @@ function baseCreateRenderer(
     }
   }
 
+  // 挂载组件
   const mountComponent: MountComponentFn = (
     initialVNode,
     container,
@@ -1235,6 +1238,7 @@ function baseCreateRenderer(
       return
     }
 
+    // 响应式系统设置副作用函数 ---by lwz
     setupRenderEffect(
       instance,
       initialVNode,
@@ -2311,6 +2315,7 @@ function baseCreateRenderer(
     return hostNextSibling((vnode.anchor || vnode.el)!)
   }
 
+  // ! 重要函数render ---by lwz
   const render: RootRenderFunction = (vnode, container, isSVG) => {
     if (vnode == null) {
       if (container._vnode) {
