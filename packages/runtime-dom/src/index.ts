@@ -74,6 +74,7 @@ export const createApp = ((...args) => {
   }
 
   const { mount } = app
+  // 重载 baseCreateRenderer 的 mount ---lwz
   app.mount = (containerOrSelector: Element | ShadowRoot | string): any => {
     const container = normalizeContainer(containerOrSelector)
     if (!container) return

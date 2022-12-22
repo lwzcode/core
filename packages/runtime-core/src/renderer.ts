@@ -317,7 +317,7 @@ function baseCreateRenderer(
   createHydrationFns: typeof createHydrationFunctions
 ): HydrationRenderer
 
-// implementation
+// implementation 实现 lwz
 function baseCreateRenderer(
   options: RendererOptions,
   createHydrationFns?: typeof createHydrationFunctions
@@ -379,7 +379,7 @@ function baseCreateRenderer(
     }
 
     const { type, ref, shapeFlag } = n2
-    debugger
+    // debugger
     switch (type) {
       case Text:
         processText(n1, n2, container, anchor)
@@ -2349,10 +2349,10 @@ function baseCreateRenderer(
       internals as RendererInternals<Node, Element>
     )
   }
-
   return {
     render,
     hydrate,
+    /** 暴露 createApp lwz */
     createApp: createAppAPI(render, hydrate)
   }
 }
